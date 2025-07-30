@@ -20,7 +20,7 @@ mkdir -p "$(dirname "$LOG_FILE")"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 echo "--- Script iniciado em $(date) ---"
-echo "$(date): Log sendo salvo em: $LOG_FILE"
+echo "$(date): Log sendo salvo em: $LOG_FILE \n \n"
 
 # --- Coleta a URL do prompt ---
 echo -n "Por favor, digite a URL do site para o quiosque (ex: https://exemplo.com): "
