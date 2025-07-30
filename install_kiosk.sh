@@ -50,7 +50,7 @@ echo "\$(date): Log sendo salvo em: \$LOG_FILE"
 
 # KIOSK_URL é esperada como uma variável de ambiente (definida pelo systemd)
 # Um fallback é fornecido caso não esteja definida (útil para testes manuais do kiosk.sh)
-KIOSK_URL="\${KIOSK_URL:-\"https://www.example.com\"}"
+KIOSK_URL="\${KIOSK_URL:-\"https://duckduckgo.com/\"}"
 
 echo "\$(date): URL do quiosque configurada para: \$KIOSK_URL (via ambiente)"
 
@@ -146,7 +146,7 @@ echo "/home/pi/kiosk.sh criado e com permissões de execução."
 
 sleep 2
 
-echo "Habilitando serviço TUB-KIOSK..."
+echo "Habilitando serviço KIOSK..."
 # O conteúdo do serviço systemd, incluindo a variável de ambiente KIOSK_URL
 kiosk_service_content="
 [Unit]

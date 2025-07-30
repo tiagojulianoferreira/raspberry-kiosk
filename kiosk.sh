@@ -100,8 +100,8 @@ while true; do
             CHROMIUM_PID=$!
             echo "$(date): Chromium reiniciado. Novo PID do comando: $CHROMIUM_PID"
 
-            sleep 300 # Espera 5 minutos antes da próxima re-verificação
-            echo "$(date): Re-verificando status após 5 minutos do reinício..."
+            sleep 60 # Espera 1 minuto antes da próxima re-verificação
+            echo "$(date): Re-verificando status após 1 minuto do reinício..."
             HTTP_STATUS=$(curl -o /dev/null -s -w "%{http_code}\n" "$KIOSK_URL")
             echo "$(date): Status HTTP após reinício: $HTTP_STATUS"
         done
