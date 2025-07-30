@@ -6,9 +6,9 @@ Este script foi feito para transformar seu Raspberry Pi em um quiosque digital. 
 
 - Pede o site: No início, ele te pergunta qual endereço da web (URL) você quer que o quiosque mostre.
 
-- Monitora e gerencia:
+- kiosk.service:
 
-    - Cria um serviço inteligente que faz o navegador e o monitoramento começarem automaticamente toda vez que o Raspberry Pi liga.
+    - Cria um serviço que faz o navegador e o monitoramento começarem automaticamente toda vez que o Raspberry Pi liga.
 
     - Fica verificando a URL a cada minuto. Se o site sair do ar, ele reinicia o navegador a cada 1 minuto até o site voltar.
 
@@ -21,6 +21,7 @@ Este script foi feito para transformar seu Raspberry Pi em um quiosque digital. 
 Você executa [este script](https://raw.githubusercontent.com/tiagojulianoferreira/raspberry-kiosk/refs/heads/main/install_kiosk.sh) apenas uma vez pra configurar seu quiosque. Depois disso, ele cuida de tudo sozinho. Garante que seu Raspberry Pi esteja sempre mostrando o site que você escolheu, mesmo que a internet caia ou o servidor do site tenha problemas. 
 
 # Execução em comando único
+> Será solicitado o endereço do site (Ex. https://ddg.com)
 ```shell
 bash -c "$(wget -qO- https://raw.githubusercontent.com/tiagojulianoferreira/raspberry-kiosk/refs/heads/main/install_kiosk.sh)"
 ```
