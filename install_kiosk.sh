@@ -89,7 +89,8 @@ sudo -u "\$X_USER" sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' "/home
 echo "\$(date): Preferências do Chromium ajustadas para o usuário \$X_USER."
 
 # Abre o Chromium em modo quiosque
-sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk "\$KIOSK_URL" &
+# ADICIONADO: --autoplay-policy=no-user-gesture-required para permitir áudio automático
+sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk --autoplay-policy=no-user-gesture-required "\$KIOSK_URL" &
 echo "\$(date): Chromium iniciado em modo quiosque como usuário \$X_USER, exibindo \$KIOSK_URL."
 
 CHROMIUM_PID=\$!
@@ -113,7 +114,7 @@ while true; do
             sleep 5 # Dá um tempo para o processo morrer completamente
 
             echo "\$(date): Reiniciando Chromium em modo quiosque como usuário \$X_USER..."
-            sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk "\$KIOSK_URL" &
+            sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk --autoplay-policy=no-user-gesture-required "\$KIOSK_URL" &
             CHROMIUM_PID=\$!
             echo "\$(date): Chromium reiniciado para recarregar. Novo PID: \$CHROMIUM_PID"
             WAS_OFFLINE=false # Reseta a flag
@@ -130,7 +131,7 @@ while true; do
             sleep 5 # Dá um tempo para o processo morrer completamente
 
             echo "\$(date): Reiniciando Chromium em modo quiosque como usuário \$X_USER..."
-            sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk "\$KIOSK_URL" &
+            sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" /usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk --autoplay-policy=no-user-gesture-required "\$KIOSK_URL" &
             CHROMIUM_PID=\$!
             echo "\$(date): Chromium reiniciado. Novo PID do comando: \$CHROMIUM_PID"
 
