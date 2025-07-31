@@ -2,6 +2,8 @@
 
 Este script transforma o Raspberry Pi em um quiosque digital. Ele exibe um site específico em tela cheia, funciona sozinho e consegue se recuperar de problemas de conexão.
 
+> Testado no Raspberry Pi 3
+
 - Prepara o sistema: Instala ferramentas essenciais (como as que escondem o mouse e simulam teclas) e configura o Chromium pra iniciar sempre em modo quiosque (tela cheia), sem barras ou avisos. Ele também desativa o protetor de tela do sistema.
 
 - Pede o site: No início, ele te pergunta qual endereço da web (URL) você quer que o quiosque mostre.
