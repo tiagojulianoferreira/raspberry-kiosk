@@ -2,7 +2,7 @@
 
 echo "Instalando dependências necessárias (unclutter, xdotool, curl, chromium-browser)..."
 sudo apt-get update
-sudo apt-get install -y unclutter xdotool curl
+sudo apt-get install -y unclutter xdotool curl chromium-browser
 
 echo "Configura Navegador Chromium para TV Kiosk"
 
@@ -36,7 +36,7 @@ trim_log_file() {
     if [ -f "\$LOG_FILE" ]; then
         local current_lines=\$(wc -l < "\$LOG_FILE")
         if [ "\$current_lines" -gt "\$MAX_LOG_LINES" ]; then
-            tail -n "\$MAX_LOG_LINES" "\$LOG_FILE" > "\${LOG_FILE}.tmp"
+            tail -n "\$MAX_LINES" "\$LOG_FILE" > "\${LOG_FILE}.tmp"
             mv "\${LOG_FILE}.tmp" "\$LOG_FILE"
             echo "\$(date): Log aparado para as últimas \$MAX_LOG_LINES linhas."
         fi
@@ -78,6 +78,15 @@ sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" xs
 sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" xset s off
 sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" xset -dpms
 echo "\$(date): Screensaver e DPMS desabilitados (para o usuário \$X_USER)."
+
+# Configura a saída de áudio para Headphone (Fone de ouvido)
+echo "\$(date): Configurando a saída de áudio para Headphone..."
+sudo raspi-config nonint do_audio 0
+sleep 1
+
+# Garante que o volume do áudio esteja no máximo (usando o canal PCM)
+sudo -u "\$X_USER" amixer sset 'PCM' 100%
+echo "\$(date): Volume do áudio definido para 100%."
 
 # Esconde o cursor do mouse quando ocioso
 sudo -u "\$X_USER" env DISPLAY="\$DISPLAY_VAR" XAUTHORITY="\$XAUTHORITY_FILE" unclutter -idle 0.5 -root &
