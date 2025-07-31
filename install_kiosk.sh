@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "Instalando dependências necessárias (unclutter, xdotool, curl, chromium-browser)..."
+echo "Instalando dependências necessárias (unclutter, xdotool, curl, chromium-browser, chromium-codecs-ffmpeg-extra)..."
 sudo apt-get update
-sudo apt-get install -y unclutter xdotool curl chromium-browser
+sudo apt-get install -y unclutter xdotool curl chromium-browser chromium-codecs-ffmpeg-extra
 
 echo "Configura Navegador Chromium para TV Kiosk"
 
